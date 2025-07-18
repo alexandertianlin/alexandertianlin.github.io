@@ -5,85 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tian Lin (Alex) - Portfolio</title>
     <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #141e30, #243b55);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #e6e6e6;
+            line-height: 1.6;
         }
         header {
-            background: linear-gradient(135deg, #0078ff, #00d4ff);
             text-align: center;
             padding: 3rem 1rem;
-            color: #fff;
         }
         header img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid #fff;
+            border: 4px solid #00d4ff;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
         }
+        header img:hover { transform: scale(1.05); }
         header h1 {
             font-size: 2.5rem;
-            margin: 0.5rem 0 0.3rem;
+            margin-bottom: 0.3rem;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
         }
         header p {
-            font-size: 1.1rem;
-            margin: 0.3rem 0;
+            margin: 0.2rem 0;
+            color: #bbb;
         }
         .social-links a {
             margin: 0 0.5rem;
-            color: #fff;
-            font-size: 1.3rem;
+            padding: 0.4rem 0.8rem;
+            background: #00d4ff;
+            color: #000;
+            border-radius: 5px;
+            font-size: 1rem;
             text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        main {
+        .social-links a:hover {
+            background: #fff;
+            color: #00d4ff;
+        }
+        .container {
             max-width: 1000px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 0 1rem;
         }
         .card {
-            background: #fff;
+            background: rgba(20, 20, 20, 0.8);
             border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            margin-bottom: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
         }
         .card h2 {
-            color: #0078ff;
             border-bottom: 2px solid #00d4ff;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            color: #00d4ff;
+            text-shadow: 0 0 8px #00d4ff;
         }
-        .skills span {
-            display: inline-block;
-            background: #0078ff;
-            color: #fff;
-            padding: 0.3rem 0.7rem;
-            margin: 0.3rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+
+        /* Skill Bars */
+        .skill-bar {
+            margin: 0.6rem 0;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        .skill-bar span {
+            display: block;
+            margin-bottom: 0.3rem;
         }
-        ul li {
-            margin: 0.5rem 0;
+        .bar {
+            background: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 10px;
         }
-        ul li a {
-            text-decoration: none;
-            color: #0078ff;
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0078ff);
+            width: 0;
+            animation: fill 2s forwards;
         }
-        ul li a:hover {
-            text-decoration: underline;
+        @keyframes fill {
+            from { width: 0; }
+            to { width: var(--width); }
         }
+
+        a { color: #00d4ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
         footer {
             text-align: center;
-            font-size: 0.9rem;
             padding: 1rem;
-            background: #eee;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -91,42 +120,91 @@
     <header>
         <img src="lin-photo.jpg" alt="Tian Lin">
         <h1>Tian Lin (Alex)</h1>
-        <p>Computer Engineering | AI & ML Enthusiast | Researcher</p>
-        <div class="social-links">
-            <a href="mailto:alexandertianlin@gmail.com">📧 Email</a>
-            <a href="https://github.com/alexandertianlin">GitHub</a>
+        <p>Computer & Communication Engineering | AI & ML | Python Developer</p>
+        <p>
+            <a href="mailto:alexandertianlin@gmail.com">Email</a> |
+            <a href="https://github.com/alexandertianlin">GitHub</a> |
             <a href="https://www.linkedin.com/in/alexandertianlin">LinkedIn</a>
-        </div>
+        </p>
     </header>
-    <main>
+
+    <div class="container">
+        <!-- About Me -->
         <div class="card">
             <h2>About Me</h2>
             <p>
-                I am a Computer Engineering undergraduate with expertise in AI/ML, LLMs, and automation systems.
-                I have research experience in machine learning models for healthcare assessment and hands-on 
-                experience in developing AI Agent workflows, front-end, and back-end systems.
+                I am a Computer & Communication Engineering undergraduate with a solid foundation in Python, C++, PHP, and HTML. 
+                I have practical experience in data analysis, machine learning, AI model training, and neural network development. 
+                I am also experienced in project management and team collaboration.
             </p>
         </div>
+
+        <!-- Skills -->
         <div class="card">
             <h2>Skills</h2>
-            <div class="skills">
-                <span>Python</span><span>AI/ML</span><span>LangChain</span><span>RAG</span><span>FastAPI</span>
-                <span>TensorFlow</span><span>Scikit-learn</span><span>Playwright</span><span>WeChat Mini App</span>
+            <div class="skill-bar">
+                <span>Python</span>
+                <div class="bar"><div class="bar-fill" style="--width: 90%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>AI & ML (TensorFlow, Scikit-learn)</span>
+                <div class="bar"><div class="bar-fill" style="--width: 85%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>Embedded Systems (STM32, Arduino)</span>
+                <div class="bar"><div class="bar-fill" style="--width: 80%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>Web Development (HTML, PHP, MySQL)</span>
+                <div class="bar"><div class="bar-fill" style="--width: 75%;"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>LangChain, RAG, Coze</span>
+                <div class="bar"><div class="bar-fill" style="--width: 70%;"></div></div>
             </div>
         </div>
+
+        <!-- Experience -->
+        <div class="card">
+            <h2>Experience</h2>
+            <p><b>Research Assistant – MyAgeing Institute (07/2024 - 10/2024)</b></p>
+            <ul>
+                <li>Developed 4 machine learning models (CNN2D, LSTM, Decision Tree, Random Forest) for activity recognition using smartphone sensors.</li>
+                <li>Achieved 98.39% accuracy for Sit-to-Stand detection with Random Forest; optimized duration prediction error to 4.35% with CNN2D + threshold algorithm.</li>
+            </ul>
+            <p><b>Python Developer – Beijing Yiyanyuese Technology (03/2025 - 07/2025)</b></p>
+            <ul>
+                <li>Developed AI Agent workflows and RAG-enhanced content generation systems using Coze + Python + Feishu API.</li>
+                <li>Built multi-modal prompt optimization pipelines to improve content and image generation quality.</li>
+            </ul>
+            <p><b>Network Intern – Weinong BioTech (07/2023 - 10/2023)</b></p>
+            <ul>
+                <li>Optimized company LAN network architecture, improving stability and reducing latency by 30%.</li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
         <div class="card">
             <h2>Projects</h2>
             <ul>
-                <li><a href="https://github.com/alexandertianlin/xiaohongshu-qr-login">QR Code Web Login System (FastAPI + Playwright)</a></li>
-                <li><a href="https://github.com/alexandertianlin/ai-agent-workflow">AI Agent Workflow – Coze & LangChain</a></li>
-                <li><a href="https://github.com/alexandertianlin/sit-to-stand-ml">Smartphone-based Sit-to-Stand ML Model</a></li>
+                <li>Smart Water Quality Monitoring & Auto-Irrigation System (AI + IoT).</li>
+                <li>Smartphone-based Sit-to-Stand ML Assessment System (Final Year Project).</li>
+                <li>Dorm Package Management System – Backend & Database Development.</li>
             </ul>
         </div>
+
+        <!-- Education & Awards -->
         <div class="card">
-            <h2>Contact</h2>
-            <p>If you are interested in my work, feel free to reach out via email or LinkedIn.</p>
+            <h2>Education & Awards</h2>
+            <p><b>Universiti Putra Malaysia</b> – BEng in Computer & Communication Engineering (2021 - 2025)</p>
+            <ul>
+                <li>Final Year Project Silver Award – UPM, 2024</li>
+                <li>IEEE Signal Processing Society Award – 2024</li>
+                <li>IELTS Overall 6.5</li>
+            </ul>
         </div>
-    </main>
+    </div>
+
     <footer>
         © 2025 Tian Lin | Built with GitHub Pages
     </footer>
