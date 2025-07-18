@@ -1,169 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lin Tian - Portfolio</title>
   <style>
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #141e30, #243b55);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: #e6e6e6;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3rem;
-      background: #111;
-      position: sticky;
+    nav {
+      position: fixed;
       top: 0;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: #fff;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
     }
     nav a {
-      color: #fff;
-      margin-left: 2rem;
+      color: #00d4ff;
+      margin: 0 1rem;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: bold;
+      transition: transform 0.3s, color 0.3s;
     }
-    nav a:hover { color: #ff4081; }
-    .intro {
+    nav a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+    header {
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 6rem 1rem 3rem;
     }
-    .intro img {
-      width: 120px;
+    header .avatar img {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      border: 4px solid #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .intro h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
+    header .avatar img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 212, 255, 1);
     }
-    .intro h2 span {
-      color: #ff4081;
+    header h1 {
+      font-size: 2.5rem;
+      margin-top: 1rem;
+      color: #00d4ff;
+      text-shadow: 0 0 12px #00d4ff;
     }
-    .intro p {
-      max-width: 600px;
-      margin: 1rem auto;
+    header p {
       color: #bbb;
+      font-size: 1.1rem;
     }
-    .intro .buttons {
-      margin-top: 2rem;
-    }
-    .intro .buttons a {
-      padding: 0.6rem 1.5rem;
+    .social-links a {
+      display: inline-block;
       margin: 0 0.5rem;
-      border-radius: 25px;
-      border: none;
-      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      background: #00d4ff;
+      color: #000;
+      border-radius: 6px;
       text-decoration: none;
-      color: #fff;
-      background: #ff4081;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .social-links a:hover {
+      background: #fff;
+      transform: scale(1.1);
+      color: #00d4ff;
     }
     .section {
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: auto;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem 1rem;
+      background: rgba(20, 20, 20, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+      scroll-margin-top: 70px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .section h3 {
-      text-transform: uppercase;
-      font-size: 1.5rem;
-      color: #ff914d;
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section h2 {
+      color: #00d4ff;
+      border-bottom: 2px solid #00d4ff;
+      padding-bottom: 0.3rem;
+      text-shadow: 0 0 8px #00d4ff;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #00d4ff;
+    }
+    .timeline-item {
       margin-bottom: 1.5rem;
+      padding-left: 20px;
+      position: relative;
     }
-    .projects {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: #00d4ff;
+      border-radius: 50%;
     }
-    .project-card {
-      flex: 1 1 calc(50% - 1rem);
-      background: #1a1a1a;
-      padding: 1rem;
-      border-radius: 10px;
+    .timeline-item h3 {
+      color: #00d4ff;
+      margin-bottom: 0.3rem;
     }
-    .project-card h4 { margin: 0.5rem 0; }
-    .experience-item {
-      margin-bottom: 1.5rem;
-    }
-    .experience-item h4 {
-      font-size: 1.2rem;
-      color: #fff;
-    }
-    .experience-item p { color: #aaa; }
     footer {
       text-align: center;
-      padding: 2rem;
-      color: #888;
-      border-top: 1px solid #222;
+      padding: 1rem;
+      background: rgba(0,0,0,0.6);
+      margin-top: 2rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+  </nav>
+
   <header>
+    <div class="avatar">
+      <img src="avatar.png" alt="Lin Tian">
+    </div>
     <h1>Lin Tian</h1>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Computer Engineering | AI & ML | Python Developer</p>
+    <div class="social-links">
+      <a href="mailto:alexandertianlin@gmail.com">Email</a>
+      <a href="https://alexandertianlin.github.io/">GitHub</a>
+    </div>
   </header>
 
-  <section class="intro">
-    <img src="https://alexandertianlin.github.io/avatar.png" alt="Profile" />
-    <h2>I do <span>AI & Code</span></h2>
+  <section class="section" id="about">
+    <h2>About Me</h2>
     <p>
-      Computer Engineering undergraduate with strong expertise in AI/ML, LLMs, and automation systems. IEEE award-winning researcher and AI Application Developer Intern. 
-      Skilled in building AI Agents (Coze + LangChain + RAG) and intelligent web solutions.
+      Computer Engineering undergraduate with strong expertise in AI/ML, LLMs, and automation systems, backed by IEEE award-winning research and hands-on experience as an AI Application Developer Intern.
     </p>
-    <div class="buttons">
-      <a href="mailto:alexandertianlin@gmail.com">Get In Touch</a>
-      <a href="https://alexandertianlin.github.io/">Visit My GitHub</a>
+  </section>
+
+  <section class="section" id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Python Developer – Beijing Yiyanyuese Technology</h3>
+        <p><i>Apr 2025 - Jul 2025</i></p>
+        <p>• Developed 3 AI Agent workflow applications (Chatbot, Data Search Engine, Automated Content Generator) using Coze + LangChain + FastAPI.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Research Assistant – MyAgeing Institute</h3>
+        <p><i>Jul 2024 - Oct 2024</i></p>
+        <p>• Led experiments with 4 ML models and 2 algorithms for Sit-to-Stand activity recognition, achieving 98.4% accuracy.</p>
+      </div>
     </div>
   </section>
 
   <section class="section" id="projects">
-    <h3>Projects</h3>
-    <div class="projects">
-      <div class="project-card">
-        <h4>QR Code Web Login System</h4>
-        <p>Automated QR login for Xiaohongshu (FastAPI + Playwright).</p>
-      </div>
-      <div class="project-card">
-        <h4>AI Agent Workflow</h4>
-        <p>Designed multi-step AI Agent system with Coze & LangChain.</p>
-      </div>
-      <div class="project-card">
-        <h4>Smartphone-based ML Model</h4>
-        <p>98% accuracy healthcare model submitted to IEEE TBME.</p>
-      </div>
-    </div>
+    <h2>Projects</h2>
+    <ul>
+      <li>QR Code Web Login System (FastAPI + Playwright)</li>
+      <li>AI Agent Workflow – Coze & LangChain</li>
+      <li>Smartphone-based Sit-to-Stand ML Model (98% accuracy)</li>
+    </ul>
   </section>
 
-  <section class="section" id="experience">
-    <h3>Experience</h3>
-    <div class="experience-item">
-      <h4>Python Developer @ Beijing Yiyanyuese Technology (Apr 2025 - Jul 2025)</h4>
-      <p>Developed 3 AI Agent workflows, built front/back-end systems, and designed a QR Code Web Login system.</p>
-    </div>
-    <div class="experience-item">
-      <h4>Research Assistant @ MyAgeing Institute (Jul 2024 - Oct 2024)</h4>
-      <p>Led ML experiments, achieving 98.4% accuracy and 99.8% ROC-AUC, submitted to IEEE TBME.</p>
-    </div>
-    <div class="experience-item">
-      <h4>Lab Assistant @ AI & Embedded Systems Lab (Nov 2023 - Jun 2024)</h4>
-      <p>Designed Smart Water Monitoring & Automated Irrigation System leveraging AI and IoT.</p>
-    </div>
+  <section class="section" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Python, C++, PHP, HTML, MySQL</li>
+      <li>Machine Learning: CNN2D, LSTM, Random Forest, Decision Tree</li>
+      <li>AI Development: RAG, AI Agent Workflow, Prompt Engineering</li>
+      <li>Tools: TensorFlow, STM32CubeIDE, Arduino IDE, GitHub</li>
+    </ul>
   </section>
 
-  <footer id="contact">
-    <p>Contact: alexandertianlin@gmail.com | +861-851-5180355</p>
-    <p>© 2025 Lin Tian. All rights reserved.</p>
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <p>Universiti Putra Malaysia – BEng in Computer and Communication System Engineering (2021 - 2025) | CGPA: 3.48/4.0</p>
+  </section>
+
+  <footer>
+    © 2025 Lin Tian | Portfolio
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const revealOnScroll = () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>
