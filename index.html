@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tian Lin (Alex) - Portfolio</title>
   <style>
+    /* 动态渐变背景 */
     @keyframes gradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -20,12 +21,13 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
-    /* Navigation Bar */
+
+    /* 顶部导航 */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
       padding: 0.8rem;
       display: flex;
       justify-content: center;
@@ -37,31 +39,64 @@
       margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: transform 0.3s, color 0.3s;
     }
     nav a:hover {
       color: #fff;
+      transform: scale(1.1);
     }
+
+    /* 头部 */
     header {
       text-align: center;
       padding: 6rem 1rem 3rem;
     }
-    header img {
-      width: 120px;
-      height: 120px;
+    header .avatar {
+      position: relative;
+      display: inline-block;
+    }
+    header .avatar img {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       border: 4px solid #00d4ff;
-      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    header .avatar img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 212, 255, 1);
     }
     header h1 {
       font-size: 2.5rem;
+      margin-top: 1rem;
       color: #00d4ff;
-      text-shadow: 0 0 8px #00d4ff;
+      text-shadow: 0 0 12px #00d4ff;
     }
     header p {
       color: #bbb;
       font-size: 1.1rem;
     }
+
+    /* 社交图标 */
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      padding: 0.4rem 0.8rem;
+      background: #00d4ff;
+      color: #000;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .social-links a:hover {
+      background: #fff;
+      transform: scale(1.1);
+      color: #00d4ff;
+    }
+
+    /* 内容卡片 */
     .section {
       max-width: 1000px;
       margin: 2rem auto;
@@ -69,11 +104,14 @@
       background: rgba(20, 20, 20, 0.8);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-      scroll-margin-top: 60px; /* offset for nav */
-      transition: transform 0.3s ease;
+      scroll-margin-top: 70px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .section:hover {
-      transform: translateY(-5px);
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .section h2 {
       color: #00d4ff;
@@ -82,7 +120,7 @@
       text-shadow: 0 0 8px #00d4ff;
     }
 
-    /* Skill Bars */
+    /* 技能进度条 */
     .skill-bar {
       margin: 0.6rem 0;
     }
@@ -144,14 +182,14 @@
     footer {
       text-align: center;
       padding: 1rem;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
       margin-top: 2rem;
       font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- 导航 -->
   <nav>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -160,38 +198,43 @@
     <a href="#education">Education</a>
   </nav>
 
-  <!-- Header -->
+  <!-- 头部 -->
   <header>
-    <img src="lin-photo.jpg" alt="Tian Lin">
+    <div class="avatar">
+      <img src="lin-photo.jpg" alt="Tian Lin">
+    </div>
     <h1>Tian Lin (Alex)</h1>
     <p>Computer & Communication Engineering | AI & ML | Python Developer</p>
+    <div class="social-links">
+      <a href="mailto:alexandertianlin@gmail.com">Email</a>
+      <a href="https://github.com/alexandertianlin">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandertianlin">LinkedIn</a>
+    </div>
   </header>
 
-  <!-- About -->
+  <!-- Sections -->
   <section class="section" id="about">
     <h2>About Me</h2>
     <p>
       I am a Computer & Communication Engineering undergraduate with a solid foundation in Python, C++, PHP, and HTML.
-      I have practical experience in data analysis, AI model training, and neural network development. 
-      Skilled in building AI Agents, RAG pipelines, and end-to-end software systems.
+      Experienced in AI/ML model development, data analysis, and building AI Agent workflows with RAG pipelines.
     </p>
   </section>
 
-  <!-- Experience -->
   <section class="section" id="experience">
     <h2>Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
         <h3>Python Developer – Beijing Yiyanyuese Technology</h3>
         <p><i>03/2025 - 07/2025</i></p>
-        <p>• Developed AI Agent workflows and RAG-enhanced content generation systems using Coze + Python + Feishu API.</p>
+        <p>• Developed AI Agent workflows and RAG-enhanced content generation using Coze + Python + Feishu API.</p>
         <p>• Built multi-modal prompt optimization pipelines to improve content and image generation quality.</p>
       </div>
       <div class="timeline-item">
         <h3>Research Assistant – MyAgeing Institute</h3>
         <p><i>07/2024 - 10/2024</i></p>
         <p>• Developed CNN2D, LSTM, Decision Tree, and Random Forest models for activity recognition using smartphone sensors.</p>
-        <p>• Achieved 98.39% accuracy for Sit-to-Stand detection with Random Forest; optimized duration prediction error to 4.35%.</p>
+        <p>• Achieved 98.39% accuracy for Sit-to-Stand detection with Random Forest.</p>
       </div>
       <div class="timeline-item">
         <h3>Network Intern – Weinong BioTech</h3>
@@ -201,7 +244,6 @@
     </div>
   </section>
 
-  <!-- Projects -->
   <section class="section" id="projects">
     <h2>Projects</h2>
     <ul>
@@ -211,7 +253,6 @@
     </ul>
   </section>
 
-  <!-- Skills -->
   <section class="section" id="skills">
     <h2>Skills</h2>
     <div class="skill-bar">
@@ -236,7 +277,6 @@
     </div>
   </section>
 
-  <!-- Education -->
   <section class="section" id="education">
     <h2>Education & Awards</h2>
     <p><b>Universiti Putra Malaysia</b> – BEng in Computer & Communication Engineering (2021 - 2025)</p>
@@ -248,7 +288,22 @@
   </section>
 
   <footer>
-    © 2025 Tian Lin | Advanced Resume with Smooth Scroll
+    © 2025 Tian Lin | Deluxe Resume Website
   </footer>
+
+  <!-- JS for scroll animations -->
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const revealOnScroll = () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>
