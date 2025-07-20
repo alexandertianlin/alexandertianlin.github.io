@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lin Tian - Portfolio</title>
+  <title>Tian Lin (Alex) - Portfolio</title>
   <style>
     @keyframes gradient {
       0% { background-position: 0% 50%; }
@@ -20,11 +20,12 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
+    /* Navigation Bar */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       padding: 0.8rem;
       display: flex;
       justify-content: center;
@@ -36,53 +37,30 @@
       margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
-      transition: transform 0.3s, color 0.3s;
+      transition: color 0.3s;
     }
     nav a:hover {
       color: #fff;
-      transform: scale(1.1);
     }
     header {
       text-align: center;
       padding: 6rem 1rem 3rem;
     }
-    header .avatar img {
-      width: 140px;
-      height: 140px;
+    header img {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       border: 4px solid #00d4ff;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    header .avatar img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(0, 212, 255, 1);
+      margin-bottom: 1rem;
     }
     header h1 {
       font-size: 2.5rem;
-      margin-top: 1rem;
       color: #00d4ff;
-      text-shadow: 0 0 12px #00d4ff;
+      text-shadow: 0 0 8px #00d4ff;
     }
     header p {
       color: #bbb;
       font-size: 1.1rem;
-    }
-    .social-links a {
-      display: inline-block;
-      margin: 0 0.5rem;
-      padding: 0.4rem 0.8rem;
-      background: #00d4ff;
-      color: #000;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .social-links a:hover {
-      background: #fff;
-      transform: scale(1.1);
-      color: #00d4ff;
     }
     .section {
       max-width: 1000px;
@@ -91,14 +69,11 @@
       background: rgba(20, 20, 20, 0.8);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-      scroll-margin-top: 70px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      scroll-margin-top: 60px; /* offset for nav */
+      transition: transform 0.3s ease;
     }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .section:hover {
+      transform: translateY(-5px);
     }
     .section h2 {
       color: #00d4ff;
@@ -106,6 +81,33 @@
       padding-bottom: 0.3rem;
       text-shadow: 0 0 8px #00d4ff;
     }
+
+    /* Skill Bars */
+    .skill-bar {
+      margin: 0.6rem 0;
+    }
+    .skill-bar span {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .bar {
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 10px;
+    }
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00d4ff, #0078ff);
+      width: 0;
+      animation: fill 2s forwards;
+    }
+    @keyframes fill {
+      from { width: 0; }
+      to { width: var(--width); }
+    }
+
+    /* Timeline */
     .timeline {
       position: relative;
       padding-left: 20px;
@@ -138,16 +140,18 @@
       color: #00d4ff;
       margin-bottom: 0.3rem;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       margin-top: 2rem;
       font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -156,81 +160,95 @@
     <a href="#education">Education</a>
   </nav>
 
+  <!-- Header -->
   <header>
-    <div class="avatar">
-      <img src="avatar.png" alt="Lin Tian">
-    </div>
-    <h1>Lin Tian</h1>
-    <p>Computer Engineering | AI & ML | Python Developer</p>
-    <div class="social-links">
-      <a href="mailto:alexandertianlin@gmail.com">Email</a>
-      <a href="https://alexandertianlin.github.io/">GitHub</a>
-    </div>
+    <img src="lin-photo.jpg" alt="Tian Lin">
+    <h1>Tian Lin (Alex)</h1>
+    <p>Computer & Communication Engineering | AI & ML | Python Developer</p>
   </header>
 
+  <!-- About -->
   <section class="section" id="about">
     <h2>About Me</h2>
     <p>
-      Computer Engineering undergraduate with strong expertise in AI/ML, LLMs, and automation systems, backed by IEEE award-winning research and hands-on experience as an AI Application Developer Intern.
+      I am a Computer & Communication Engineering undergraduate with a solid foundation in Python, C++, PHP, and HTML.
+      I have practical experience in data analysis, AI model training, and neural network development. 
+      Skilled in building AI Agents, RAG pipelines, and end-to-end software systems.
     </p>
   </section>
 
+  <!-- Experience -->
   <section class="section" id="experience">
     <h2>Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
         <h3>Python Developer – Beijing Yiyanyuese Technology</h3>
-        <p><i>Apr 2025 - Jul 2025</i></p>
-        <p>• Developed 3 AI Agent workflow applications (Chatbot, Data Search Engine, Automated Content Generator) using Coze + LangChain + FastAPI.</p>
+        <p><i>03/2025 - 07/2025</i></p>
+        <p>• Developed AI Agent workflows and RAG-enhanced content generation systems using Coze + Python + Feishu API.</p>
+        <p>• Built multi-modal prompt optimization pipelines to improve content and image generation quality.</p>
       </div>
       <div class="timeline-item">
         <h3>Research Assistant – MyAgeing Institute</h3>
-        <p><i>Jul 2024 - Oct 2024</i></p>
-        <p>• Led experiments with 4 ML models and 2 algorithms for Sit-to-Stand activity recognition, achieving 98.4% accuracy.</p>
+        <p><i>07/2024 - 10/2024</i></p>
+        <p>• Developed CNN2D, LSTM, Decision Tree, and Random Forest models for activity recognition using smartphone sensors.</p>
+        <p>• Achieved 98.39% accuracy for Sit-to-Stand detection with Random Forest; optimized duration prediction error to 4.35%.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Network Intern – Weinong BioTech</h3>
+        <p><i>07/2023 - 10/2023</i></p>
+        <p>• Optimized company LAN architecture, improving stability and reducing latency by 30%.</p>
       </div>
     </div>
   </section>
 
+  <!-- Projects -->
   <section class="section" id="projects">
     <h2>Projects</h2>
     <ul>
-      <li>QR Code Web Login System (FastAPI + Playwright)</li>
-      <li>AI Agent Workflow – Coze & LangChain</li>
-      <li>Smartphone-based Sit-to-Stand ML Model (98% accuracy)</li>
+      <li>Smart Water Quality Monitoring & Auto-Irrigation System (AI + IoT).</li>
+      <li>Smartphone-based Sit-to-Stand ML Assessment System (Final Year Project).</li>
+      <li>Dorm Package Management System – Backend & Database Development.</li>
     </ul>
   </section>
 
+  <!-- Skills -->
   <section class="section" id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>Python, C++, PHP, HTML, MySQL</li>
-      <li>Machine Learning: CNN2D, LSTM, Random Forest, Decision Tree</li>
-      <li>AI Development: RAG, AI Agent Workflow, Prompt Engineering</li>
-      <li>Tools: TensorFlow, STM32CubeIDE, Arduino IDE, GitHub</li>
-    </ul>
+    <div class="skill-bar">
+      <span>Python</span>
+      <div class="bar"><div class="bar-fill" style="--width: 90%;"></div></div>
+    </div>
+    <div class="skill-bar">
+      <span>AI & ML (TensorFlow, Scikit-learn)</span>
+      <div class="bar"><div class="bar-fill" style="--width: 85%;"></div></div>
+    </div>
+    <div class="skill-bar">
+      <span>Embedded Systems (STM32, Arduino)</span>
+      <div class="bar"><div class="bar-fill" style="--width: 80%;"></div></div>
+    </div>
+    <div class="skill-bar">
+      <span>Web Development (HTML, PHP, MySQL)</span>
+      <div class="bar"><div class="bar-fill" style="--width: 75%;"></div></div>
+    </div>
+    <div class="skill-bar">
+      <span>LangChain, RAG, Coze</span>
+      <div class="bar"><div class="bar-fill" style="--width: 70%;"></div></div>
+    </div>
   </section>
 
+  <!-- Education -->
   <section class="section" id="education">
-    <h2>Education</h2>
-    <p>Universiti Putra Malaysia – BEng in Computer and Communication System Engineering (2021 - 2025) | CGPA: 3.48/4.0</p>
+    <h2>Education & Awards</h2>
+    <p><b>Universiti Putra Malaysia</b> – BEng in Computer & Communication Engineering (2021 - 2025)</p>
+    <ul>
+      <li>Final Year Project Silver Award – UPM, 2024</li>
+      <li>IEEE Signal Processing Society Award – 2024</li>
+      <li>IELTS Overall 6.5</li>
+    </ul>
   </section>
 
   <footer>
-    © 2025 Lin Tian | Portfolio
+    © 2025 Tian Lin | Advanced Resume with Smooth Scroll
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll('.section');
-    const revealOnScroll = () => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          section.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-  </script>
 </body>
 </html>
