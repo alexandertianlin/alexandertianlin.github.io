@@ -37,6 +37,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
+      font-size: 0.9rem;
     }
     nav a:hover { color: #fff; }
     header {
@@ -54,12 +55,13 @@
       font-size: 2.5rem;
       color: #00d4ff;
       text-shadow: 0 0 8px #00d4ff;
+      margin-bottom: 0.3rem;
     }
-    header p { color: #bbb; font-size: 1.1rem; }
+    header p { color: #bbb; font-size: 1.05rem; }
     .section {
       max-width: 1000px;
       margin: 2rem auto;
-      padding: 2rem 1rem;
+      padding: 2rem 1.5rem;
       background: rgba(20,20,20,0.8);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,212,255,0.3);
@@ -73,138 +75,318 @@
       padding-bottom: 0.3rem;
       text-shadow: 0 0 8px #00d4ff;
     }
-    .skill-bar { margin: 0.6rem 0; }
-    .skill-bar span { display: block; margin-bottom: 0.3rem; }
-    .bar { background: #333; border-radius: 8px; overflow: hidden; height: 10px; }
-    .bar-fill { height: 100%; background: linear-gradient(90deg,#00d4ff,#0078ff); width: 0; animation: fill 2s forwards; }
-    @keyframes fill { from { width:0; } to { width: var(--width); } }
-    .timeline { position: relative; padding-left:20px; }
-    .timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:2px; background:#00d4ff; }
-    .timeline-item { margin-bottom:1.5rem; padding-left:20px; position:relative; }
-    .timeline-item::before { content:''; position:absolute; left:-4px; top:5px; width:10px; height:10px; background:#00d4ff; border-radius:50%; }
-    .timeline-item h3 { color:#00d4ff; margin-bottom:0.3rem; }
-    footer { text-align:center; padding:1rem; background:rgba(0,0,0,0.6); margin-top:2rem; font-size:0.9rem; }
+    .timeline { position: relative; padding-left: 20px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #00d4ff; }
+    .timeline-item { margin-bottom: 1.8rem; padding-left: 20px; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -4px; top: 5px; width: 10px; height: 10px; background: #00d4ff; border-radius: 50%; }
+    .timeline-item h3 { color: #00d4ff; margin-bottom: 0.2rem; }
+    .timeline-item .date { color: #888; font-size: 0.85rem; }
+    .timeline-item ul { margin-top: 0.5rem; }
+    .timeline-item li { margin-bottom: 0.3rem; }
+    .project-card {
+      background: rgba(30,30,30,0.9);
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s;
+    }
+    .project-card:hover { border-color: #00d4ff; }
+    .project-card h3 { color: #00d4ff; margin-bottom: 0.3rem; }
+    .project-card .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+    .tag-research { background: #1f6feb33; color: #58a6ff; }
+    .tag-vision { background: #a371f733; color: #a371f7; }
+    .tag-robotics { background: #f0883e33; color: #f0883e; }
+    .tag-ml { background: #3fb95033; color: #3fb950; }
+    .tag-web { background: #d2992233; color: #d29922; }
+    .tag-iot { background: #f8514933; color: #f85149; }
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-category {
+      background: rgba(30,30,30,0.9);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .skill-category h3 { color: #00d4ff; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .skill-category ul { list-style: none; padding: 0; }
+    .skill-category li { padding: 0.15rem 0; font-size: 0.85rem; }
+    .skill-category li::before { content: "▸ "; color: #00d4ff; }
+    footer { text-align: center; padding: 1rem; background: rgba(0,0,0,0.6); margin-top: 2rem; font-size: 0.9rem; }
+    a { color: #00d4ff; }
+    .current-badge {
+      display: inline-block;
+      background: #3fb95033;
+      color: #3fb950;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
   </style>
 </head>
 <body>
   <nav>
     <a href="#about">About</a>
-    <a href="#summary">Summary</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#awards">Awards</a>
-    <a href="#certs">Certifications</a>
-    <a href="#volunteer">Volunteer</a>
   </nav>
   <header>
     <img src="lin-photo.jpg" alt="Tian Lin">
     <h1>Tian Lin (Alex)</h1>
-    <p>Computer & Communication Engineering Student</p>
-    <p>861-851-5180355 | <a href="mailto:alexandertianlin@gmail.com">alexandertianlin@gmail.com</a> | <a href="https://alexandertianlin.github.io/">alexandertianlin.github.io</a></p>
-    <p>101-UNIT 1, BUILDING 3, DISTRICT 1, HUIXINXILI, BEIJING, China</p>
+    <p>MSc Student, Nanyang Technological University | Robotics & Computer Vision Researcher</p>
+    <p>
+      <a href="mailto:alexandertianlin@gmail.com">alexandertianlin@gmail.com</a> |
+      <a href="https://github.com/alexandertianlin">GitHub</a> |
+      <a href="https://alexandertianlin.github.io">Portfolio</a>
+    </p>
   </header>
+
+  <!-- About -->
   <section class="section" id="about">
     <h2>About Me</h2>
-    <p>I am a Computer Engineering undergraduate with expertise in AI/ML, LLMs and automation systems. I build intelligent systems, end-to-end web solutions and AI Agents (Coze + LangChain + RAG).</p>
+    <p>I am a Master's student at <strong>Nanyang Technological University (NTU)</strong>, Singapore, researching multi-modal hand tracking fusion for dexterous robotic manipulation. My work combines <strong>3D hand mesh recovery (HaMeR)</strong>, <strong>pose estimation (ViTPose)</strong>, <strong>IMU glove sensor fusion</strong>, and <strong>RealSense depth cameras</strong> to build real-time human hand-to-robot retargeting pipelines. I am currently preparing a research paper on <strong>per-finger contact-event tactile world-action models with arm-hand coordination VLA</strong>.</p>
+    <p>Previously, I built AI-driven systems ranging from LLM Agent workflows to IEEE award-winning ML healthcare models. I thrive at the intersection of <strong>computer vision, robotics, embedded systems, and AI</strong>.</p>
   </section>
-  <section class="section" id="summary">
-    <h2>Professional Summary</h2>
-    <p>Computer Engineering undergraduate with strong expertise in AI/ML, LLMs, and automation systems, backed by IEEE award-winning research and hands-on experience as an AI Application Developer Intern. Skilled in building intelligent systems, end-to-end web solutions, and AI Agents (Coze + LangChain + RAG). Currently preparing an IEEE TBME submission with a smartphone-based ML model achieving 98% accuracy for healthcare assessment.</p>
-  </section>
+
+  <!-- Experience -->
   <section class="section" id="experience">
     <h2>Work Experience</h2>
     <div class="timeline">
+
       <div class="timeline-item">
-        <h3>Python Developer – Beijing Yiyanyuese Technology</h3>
-        <p><i>Apr 2025 - Jul 2025</i></p>
+        <h3>Research Intern — Lingxi Future (灵犀未来) <span class="current-badge">CURRENT</span></h3>
+        <p class="date">Jun 2026 – Present | Beijing, China</p>
         <ul>
-          <li>Developed 3 AI Agent workflow applications (Chatbot, Data Search Engine, Automated Content Generator) using Coze + LangChain + FastAPI, improving workflow efficiency by 35%</li>
-          <li>Built front-end (WeChat Mini Program) and back-end (FastAPI, MySQL) modules for user account binding and data retrieval</li>
-          <li>Designed a QR Code Web Login System using Playwright for automated Xiaohongshu login, enabling cookie extraction and session management</li>
-          <li>Published 3 open-source prototypes on GitHub</li>
+          <li>Developing a <strong>multi-modal hand tracking fusion system</strong> combining HaMeR (3D hand mesh), ViTPose (2D pose), IMU glove sensors, and RealSense D435i depth camera</li>
+          <li>Implemented <strong>per-finger confidence-gated modal switching</strong> and <strong>Slerp complementary filter</strong> for real-time hand tracking at ~10 FPS with 99.3% detection rate</li>
+          <li>Built STM32H523/H70B IMU glove firmware (6× MPU6050, 100Hz) with tactile/force sensor channels</li>
+          <li>Created Unity 3D hand replay system with per-finger correction, open-palm drift refresh, and occlusion recovery</li>
+          <li>Consolidated 6 fragmented repositories into a single <a href="https://github.com/alexandertianlin/hand-tracking-fusion-system">hand-tracking-fusion-system</a> with complete fusion algorithm documentation</li>
         </ul>
       </div>
+
       <div class="timeline-item">
-        <h3>Research Assistant – MyAgeing Institute, Malaysia</h3>
-        <p><i>Jul 2024 - Oct 2024</i></p>
+        <h3>Lab Assistant — SPML Lab, Nanyang Technological University <span class="current-badge">CURRENT</span></h3>
+        <p class="date">2026 – Present | Singapore</p>
         <ul>
-          <li>Led experiments with 4 ML models (CNN, LSTM, Random Forest, Decision Tree) and 2 algorithms for Sit-to-Stand activity recognition</li>
-          <li>Achieved 98.4% accuracy and 99.8% ROC-AUC, with results submitted to IEEE Transactions on Biomedical Engineering</li>
-          <li>Developed a full pipeline for data preprocessing, feature engineering, and cross-validation using Python and TensorFlow</li>
+          <li>Assisting in robotics research involving dexterous hand manipulation and vision-language-action (VLA) models</li>
+          <li>Preparing research on per-finger tactile world-action prediction for robotic arm-hand coordination</li>
+          <li>Conducting SOTA survey of tactile VLA/world models (H-Tac, Dream-Tac, VT-WAM, TactAlign) and identifying novel research gaps</li>
         </ul>
       </div>
+
       <div class="timeline-item">
-        <h3>Lab Assistant – AI & Embedded Systems Lab, UPM</h3>
-        <p><i>Nov 2023 - Jun 2024</i></p>
+        <h3>Python Developer — Beijing Yiyanyuese Technology</h3>
+        <p class="date">Apr 2025 – Jul 2025 | Beijing, China</p>
         <ul>
-          <li>Designed a Smart Water Monitoring & Automated Irrigation System leveraging AI for real-time water quality prediction and irrigation scheduling</li>
-          <li>Implemented sensor integration and predictive control algorithms</li>
+          <li>Developed 3 AI Agent workflow applications (Chatbot, Data Search Engine, Automated Content Generator) using Coze + LangChain + FastAPI</li>
+          <li>Built WeChat Mini Program front-end and FastAPI/MySQL back-end for user account binding and data retrieval</li>
+          <li>Designed QR Code Web Login System using Playwright for automated Xiaohongshu login and session management</li>
         </ul>
       </div>
+
       <div class="timeline-item">
-        <h3>Network Intern – Weinong BioTech</h3>
-        <p><i>Jul 2023 - Oct 2023</i></p>
+        <h3>Research Assistant — MyAgeing Institute, Malaysia</h3>
+        <p class="date">Jul 2024 – Oct 2024</p>
         <ul>
-          <li>Optimized LAN network performance, reducing latency by 30%.</li>
-          <li>Implemented firewall rules and improved network stability through topology redesign.- Optimized LAN network performance, reducing latency by 30%.</li>
-          <li>Implemented firewall rules and improved network stability through topology redesign.</li>
+          <li>Led experiments with 4 ML models (CNN, LSTM, Random Forest, Decision Tree) for Sit-to-Stand activity recognition</li>
+          <li>Achieved <strong>98.4% accuracy and 99.8% ROC-AUC</strong>, submitted to IEEE Transactions on Biomedical Engineering</li>
+          <li>Developed full pipeline for data preprocessing, feature engineering, and cross-validation</li>
         </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Lab Assistant — AI & Embedded Systems Lab, UPM</h3>
+        <p class="date">Nov 2023 – Jun 2024 | Malaysia</p>
+        <ul>
+          <li>Designed Smart Water Monitoring & Automated Irrigation System with AI prediction and sensor integration</li>
+          <li>Implemented predictive control algorithms for real-time water quality assessment</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <h2>Key Projects</h2>
+
+    <div class="project-card">
+      <h3>Multi-Modal Hand Tracking Fusion System <span class="current-badge">CURRENT</span></h3>
+      <span class="tag tag-research">Research</span>
+      <span class="tag tag-vision">Computer Vision</span>
+      <span class="tag tag-robotics">Robotics</span>
+      <span class="tag tag-iot">Embedded/IoT</span>
+      <p style="margin-top:0.5rem">End-to-end pipeline: HaMeR 3D hand mesh → ViTPose 2D pose → IMU glove (STM32H523, 6× MPU6050) → Slerp complementary filter → Unity 3D replay. Real-time at ~10 FPS, 99.3% detection rate, per-finger confidence-gated switching with occlusion recovery. Includes complete fusion algorithm documentation, firmware, and evaluation framework.</p>
+      <p><a href="https://github.com/alexandertianlin/hand-tracking-fusion-system">GitHub Repository</a></p>
+    </div>
+
+    <div class="project-card">
+      <h3>Per-Finger Tactile World-Action Model + Arm-Hand VLA</h3>
+      <span class="tag tag-research">Research (In Progress)</span>
+      <span class="tag tag-vision">VLA</span>
+      <span class="tag tag-robotics">Dexterous Hand</span>
+      <p style="margin-top:0.5rem">Novelty: (1) per-finger contact-event (on/off/slip) prediction instead of continuous tactile fields; (2) arm-hand contact-gated VLA where arm coarse-positioning + hand fine-manipulation are coordinated via tactile gating; (3) precise HaMeR/EKF human bootstrap replacing coarse egocentric frontends. Differentiated from H-Tac, Dream-Tac, VT-WAM, and TactAlign.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>STM32 IMU Glove System</h3>
+      <span class="tag tag-iot">Embedded</span>
+      <span class="tag tag-robotics">Hardware</span>
+      <p style="margin-top:0.5rem">Custom wearable glove with STM32H523/H70B MCU, 6× MPU6050 IMU sensors (100Hz per-finger orientation), tactile/force sensor channels, WiFi transmission. Designed for real-time human hand pose capture and robot hand retargeting.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Smartphone-Based Sit-to-Stand ML Assessment</h3>
+      <span class="tag tag-ml">ML/Healthcare</span>
+      <span class="tag tag-research">IEEE Submission</span>
+      <p style="margin-top:0.5rem">ML model achieving <strong>98.4% accuracy</strong> and <strong>99.8% ROC-AUC</strong> for healthcare sit-to-stand assessment. 4 models (CNN, LSTM, RF, DT) with full preprocessing pipeline. Submitted to IEEE TBME.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>AI Agent Workflow System (Coze + LangChain + RAG)</h3>
+      <span class="tag tag-ml">LLM/AI</span>
+      <span class="tag tag-web">Web</span>
+      <p style="margin-top:0.5rem">Multi-step AI Agent system for data retrieval, content generation, and workflow automation. 3 applications: Chatbot, Data Search Engine, Automated Content Generator. WeChat Mini Program front-end + FastAPI/MySQL back-end.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Smart Water Quality Monitoring & Automated Irrigation</h3>
+      <span class="tag tag-iot">IoT</span>
+      <span class="tag tag-ml">AI</span>
+      <p style="margin-top:0.5rem">Real-time water quality prediction and automated irrigation scheduling. Sensor integration, AI-based predictive control, and embedded system deployment.</p>
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills">
+    <h2>Skills</h2>
+    <div class="skill-grid">
+
+      <div class="skill-category">
+        <h3>Computer Vision</h3>
+        <ul>
+          <li>HaMeR / MANO 3D hand mesh recovery</li>
+          <li>ViTPose / HRNet pose estimation</li>
+          <li>MediaPipe Hand Landmarker</li>
+          <li>OpenCV / RealSense D435i</li>
+          <li>Object detection & segmentation</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Robotics & Sensing</h3>
+        <ul>
+          <li>IMU sensor fusion (EKF / Slerp)</li>
+          <li>STM32 firmware (H523 / H70B)</li>
+          <li>Dexterous hand retargeting</li>
+          <li>VLA models (OpenVLA / π₀)</li>
+          <li>Unity 3D real-time replay</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Machine Learning & AI</h3>
+        <ul>
+          <li>PyTorch / TensorFlow</li>
+          <li>CNN / LSTM / Random Forest</li>
+          <li>LoRA / QLoRA fine-tuning</li>
+          <li>RAG / LangChain / AI Agents</li>
+          <li>Prompt Engineering</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Programming & Tools</h3>
+        <ul>
+          <li>Python / C / C++ / C#</li>
+          <li>FastAPI / MySQL</li>
+          <li>Git / GitHub / gh CLI</li>
+          <li>STM32CubeIDE / Arduino</li>
+          <li>Linux / Shell scripting</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Web & Cloud</h3>
+        <ul>
+          <li>HTML / CSS / JavaScript</li>
+          <li>WeChat Mini Programs</li>
+          <li>Playwright automation</li>
+          <li>Docker / CI/CD</li>
+        </ul>
+      </div>
+
+      <div class="skill-category">
+        <h3>Research & Writing</h3>
+        <ul>
+          <li>ArXiv paper analysis</li>
+          <li>SOTA survey methodology</li>
+          <li>Related-work matrix</li>
+          <li>LaTeX / Markdown</li>
+          <li>IEEE paper submission</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>MSc — Nanyang Technological University (NTU) <span class="current-badge">CURRENT</span></h3>
+        <p class="date">2026 – Present | Singapore</p>
+        <p>Robotics & Computer Vision research at <strong>SPML Lab</strong>. Focus: multi-modal hand tracking fusion, tactile VLA, dexterous robotic manipulation.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>BEng — Universiti Putra Malaysia (UPM)</h3>
+        <p class="date">Feb 2021 – Mar 2025 | Malaysia</p>
+        <p>Computer and Communication System Engineering | CGPA: 3.48/4.0 (Upper Second Class)</p>
+        <p>Relevant Coursework: Machine Learning, Signal Processing, Embedded Systems, Control Systems, Data Analytics, Robotic System.</p>
       </div>
     </div>
   </section>
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>QR Code Web Login System (FastAPI + Playwright) – Automated QR code login for Xiaohongshu, retrieving user cookies and session tokens.</li>
-      <li>AI Agent Workflow – Coze & LangChain – Designed a multi-step AI Agent system for data retrieval, content generation, and workflow automation.</li>
-      <li>Smartphone-based Sit-to-Stand ML Model – Developed an ML-based healthcare assessment model achieving 98% accuracy, submitted to IEEE TBME.</li>
-      <li>Smart Water Quality Monitoring & Automated Irrigation System (AI + IoT).</li>
-      <li>Smartphone-based Sit-to-Stand ML Assessment System (Final Year Project).</li>
-      <li>Dorm Package Management System – Backend & Database Development.</li>
-    </ul>
-  </section>
-  <section class="section" id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Programming: Python, C++, PHP, HTML, MySQL</li>
-      <li>Machine Learning: CNN2D, LSTM, Random Forest, Decision Tree</li>
-      <li>AI Development: RAG, AI Agent Workflow, Prompt Engineering</li>
-      <li>Tools & Frameworks: TensorFlow, STM32CubeIDE, Arduino IDE, GitHub</li>
-      <li>Data Analysis: Sensor data processing, algorithm optimization</li>
-      <li>Embedded Systems & IoT: Smart monitoring and automation</li>
-    </ul>
-  </section>
-  <section class="section" id="education">
-    <h2>Education</h2>
-    <p><strong>Computer Engineering, Universiti Putra Malaysia</strong> – Mar 2021 - Apr 2025</p>
-    <p>Universiti Putra Malaysia (UPM) – BEng in Computer and Communication System Engineering<br>Feb 2021 – Mar 2025 | CGPA: 3.48/4.0 (Upper Second Class, ~85%)</p>
-    <p>Relevant Coursework: Machine Learning, Signal Processing, Embedded Systems, Control Systems, Data Analytics, Robotic System.</p>
-  </section>
+
+  <!-- Awards -->
   <section class="section" id="awards">
-    <h2>Awards and Honours</h2>
+    <h2>Awards & Honours</h2>
     <ul>
-      <li>Excellence Award – IEEE Signal Processing Society, Malaysia 2024</li>
-      <li>Silver Medal – Final Year Project, UPM 2024</li>
-      <li>Vice president -National-Level Student Leadership Program 2023 – organized 300+ participant tech events with 25 team members outside campus.</li>
+      <li><strong>Excellence Award</strong> — IEEE Signal Processing Society, Malaysia 2024</li>
+      <li><strong>Silver Medal</strong> — Final Year Project, UPM 2024</li>
+      <li><strong>Vice President</strong> — National-Level Student Leadership Program 2023 (organized 300+ participant tech events)</li>
     </ul>
   </section>
+
+  <!-- Certifications -->
   <section class="section" id="certs">
-    <h2>Professional Credentials & Certifications</h2>
+    <h2>Professional Credentials</h2>
     <ul>
       <li>IELTS Overall Band 6.5</li>
-      <li>DeepLearning.AI – Generative AI with LLMs (Coursera) (2025)</li>
+      <li>DeepLearning.AI — Generative AI with LLMs (Coursera, 2025)</li>
       <li>Google TensorFlow Developer Certificate</li>
     </ul>
   </section>
-  <section class="section" id="volunteer">
-    <h2>Volunteer Work</h2>
-    <p><strong>Volunteer – National Conference on Ageing 2024 (Malaysia)</strong> <i>Apr 2024 - Apr 2024</i></p>
-    <p>Supported event organization, managed participant logistics, and provided technical assistance for research demonstrations.</p>
-  </section>
+
   <footer>
-    © 2025 Tian Lin | Advanced Resume with Smooth Scroll
+    © 2026 Tian Lin (Alex) | NTU MSc · SPML Lab · Robotics & Computer Vision
   </footer>
 </body>
 </html>
